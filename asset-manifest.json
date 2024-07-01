@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/writers-deck/static/css/main.f855e6bc.css",
-    "main.js": "/writers-deck/static/js/main.29e41afd.js",
-    "static/js/453.c344bd9d.chunk.js": "/writers-deck/static/js/453.c344bd9d.chunk.js",
-    "static/media/logo.svg": "/writers-deck/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/writers-deck/static/css/main.91c5e5b6.css",
+    "main.js": "/writers-deck/static/js/main.df3af3d0.js",
+    "static/media/banner.png": "/writers-deck/static/media/banner.8d9fc6a202a325c859b6.png",
+    "static/media/banner-cards.png": "/writers-deck/static/media/banner-cards.533b9bb5a69518e128ea.png",
     "index.html": "/writers-deck/index.html",
-    "main.f855e6bc.css.map": "/writers-deck/static/css/main.f855e6bc.css.map",
-    "main.29e41afd.js.map": "/writers-deck/static/js/main.29e41afd.js.map",
-    "453.c344bd9d.chunk.js.map": "/writers-deck/static/js/453.c344bd9d.chunk.js.map"
+    "main.91c5e5b6.css.map": "/writers-deck/static/css/main.91c5e5b6.css.map",
+    "main.df3af3d0.js.map": "/writers-deck/static/js/main.df3af3d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.29e41afd.js"
+    "static/css/main.91c5e5b6.css",
+    "static/js/main.df3af3d0.js"
   ]
 }
