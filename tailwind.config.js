@@ -14,6 +14,10 @@ module.exports = {
         banner: {
           100: "#27273B",
           200: "#0A273B"
+        },
+        card: {
+          100: "#a471b0",
+          200: "#7c5585",
         }
       },
       fontFamily: {
