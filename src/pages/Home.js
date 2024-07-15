@@ -174,7 +174,7 @@ const Home = () => {
 			</div>
 			<div className="flex justify-center pb-20">
 				<button className="inline-flex relative justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl ">
-					<span className="whitespace-nowrap text-3xl px-5 py-5 text-white"><Link to="/writers-deck/signup">Join Now</Link></span>
+					<span className="whitespace-nowrap text-3xl px-5 py-3 text-white"><Link to="/writers-deck/signup">Join Now</Link></span>
 				</button>
 
 			</div>

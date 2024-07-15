@@ -8,8 +8,9 @@ import Layout from "./components/Layout"
 
 // pages
 import Home from "./pages/Home.js"
-import Explore from "./pages/Explore.js"
-import Contest from "./pages/Contest.js"
+import About from "./pages/About.js"
+import Contact from "./pages/Contact.js"
+import UserHome from "./pages/UserHome.js"
 
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
           <Routes>
             <Route path='/writers-deck' element={<Layout/>}>
               <Route index element={<Home/>} />
-              <Route path="explore" element={<Explore/>}/>
-              <Route path="contests" element={<Contest/>}/>
+              <Route path="about-us" element={<About/>}/>
+              <Route path="contact" element={<Contact/>}/>
               <Route path="userHome" element={<UserHome/>}/>
             </Route>
           </Routes>

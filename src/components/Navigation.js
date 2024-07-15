@@ -43,8 +43,8 @@ export default function Navbar() {
 
 			<div className="text-3xl pb-8 pt-8 pr-12 md:px-8 md:py-8 text-center whitespace-nowrap"><Link to="/writers-deck">Writer's Deck</Link></div>
 			<div id="nav-items" className = "hidden flex-column md:flex items-center">
-				<div className="text-center text-xl px-4 md:pt-1"><Link to="/writers-deck/explore"> Explore </Link> </div>
-				<div className="text-center text-xl pl-4 pr-3 pt-4 md:pt-1"><Link to="/writers-deck/contests"> Contests </Link></div>
+				<div className="text-center text-xl px-4 md:pt-1"><Link to="/writers-deck/about-us"> About Us </Link> </div>
+				<div className="text-center text-xl pl-4 pr-3 pt-4 md:pt-1"><Link to="/writers-deck/contact"> Contact </Link></div>
 				<div className="text-center">
 				<ul className="inline-block md:flex">
 					<li className="pt-3 md:py-0">
