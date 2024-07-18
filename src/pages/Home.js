@@ -29,7 +29,7 @@ const Home = () => {
 				<div className="text-center max-w-2xl justify-center">
 
 					<button className="inline-flex whitespace-nowrap items-center justify-center px-5 py-3 text-sm font-medium text-center text-slate-100 border border-slate-100 rounded-xl sm:w-auto lg:text-2xl lg:mt-2">
-						<Link to="/writers-deck/signin">Get Started</Link>
+						<Link to="/writers-deck/login">Get Started</Link>
 					</button>
 				</div>
 			</div>
@@ -174,7 +174,7 @@ const Home = () => {
 			</div>
 			<div className="flex justify-center pb-20">
 				<button className="inline-flex relative justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl ">
-					<span className="whitespace-nowrap text-3xl px-5 py-3 text-white"><Link to="/writers-deck/signup">Join Now</Link></span>
+					<span className="whitespace-nowrap text-3xl px-5 py-3 text-white"><Link to="/writers-deck/login">Join Now</Link></span>
 				</button>
 
 			</div>

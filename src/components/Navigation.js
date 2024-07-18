@@ -65,7 +65,7 @@ export default function Navbar() {
 					</li>
 					<li className="py-3 md:py-0">
 						<button className="inline-flex relative justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl py-2 mr-4 ml-3 md:ml-0">
-							<span className="whitespace-nowrap text-xl px-4 pt-1"><Link to="/writers-deck/signin">Sign In </Link></span>
+							<span className="whitespace-nowrap text-xl px-4 pt-1"><Link to="/writers-deck/login">Sign In </Link></span>
 						</button>
 					</li>
 				</ul>

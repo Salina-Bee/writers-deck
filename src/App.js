@@ -11,6 +11,7 @@ import Home from "./pages/Home.js"
 import About from "./pages/About.js"
 import Contact from "./pages/Contact.js"
 import UserHome from "./pages/UserHome.js"
+import Login from "./pages/Login.js"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="contact" element={<Contact/>}/>
               <Route path="userHome" element={<UserHome/>}/>
             </Route>
+            <Route path="/writers-deck/login" element={<Login/>}/>
           </Routes>
       </div>
       </Router>

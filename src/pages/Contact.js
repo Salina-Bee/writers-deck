@@ -15,15 +15,13 @@ export default function Contact() {
         const contact = {name, email, message}
 
         try {
-            const response = await fetch('http://localhost:4000/api/contact', {
+            await fetch('http://localhost:4000/api/contact', {
                 method: "POST",
                 body: JSON.stringify(contact),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })    
-
-            const json = await response.json()
 
             // set error status
             setError("success");
