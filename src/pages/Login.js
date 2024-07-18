@@ -7,13 +7,8 @@ import SignUpForm from '../components/SignUpForm';
 
 export default function Login() {
 
-
-
-
     return (
         <div className="h-screen bg-gradient-to-b from-primary to-blue-950 flex">
-
-            
 
             <div className=" m-auto text-primary">
                 
