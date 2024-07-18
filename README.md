@@ -3,13 +3,12 @@
 Writer's Deck is a website where users can organize their notes into cards. They can choose to keep these cards private, or to share them and collaborate with other users. To see the mockup designed for this website, please go to [Writer's Deck - Mockup.pdf](https://github.com/Salina-Bee/writers-deck/blob/main/Writer's%20Deck%20-%20Mockup.pdf)
 
 ## Tools and Technologies
-- MongoDB
-- Express
-- React
-- NodeJS
-- Figma
-- CSS, Tailwind CSS
-- TipTap, ProseMirror
+- MongoDB: database
+- Express, NodeJS: server-side request handling
+- React: frontend development
+- CSS, Tailwind CSS: stylizing
+- Figma: mockup design
+- TipTap, ProseMirror (expected): headless editor framework
    
 ## Scope and Requirements
 
@@ -31,6 +30,7 @@ Writer's Deck is a website where users can organize their notes into cards. They
 - recommended sections for each card type (e.g. for a character card, recommendations may include "Personality" or "Background")
 - announcements in the User homepage, explaining any new features or changes to existing ones
 - optional notifications when changes are being made by other users
+- internationalization: the Navbar currently has a dropdown for different languages, but this is otherwise not yet implemented
 
 ### Won't have:
 - AI help assistants/chatbots
