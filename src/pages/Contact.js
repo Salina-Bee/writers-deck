@@ -31,9 +31,6 @@ export default function Contact() {
             setEmail("");
             setMessage("");
 
-            // reset form
-            const form = document.getElementById("contact-form");
-            form.reset();
 
 
         } catch (error) {
@@ -75,6 +72,7 @@ export default function Contact() {
                                         onChange={(e)=> setName(e.target.value)}
                                         name="name"
                                         type="text"
+                                        value={name}
                                         placeholder="Enter Name"
                                         autoComplete="name"
                                         className="w-96 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 focus:ring-0 sm:leading-6"
@@ -97,6 +95,7 @@ export default function Contact() {
                                         onChange={(e)=> setEmail(e.target.value)}
                                         name="email"
                                         type="email"
+                                        value={email}
                                         placeholder="Enter Email"
                                         autoComplete="email"
                                         className="w-96 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
@@ -118,6 +117,7 @@ export default function Contact() {
                                         onChange={(e)=> setMessage(e.target.value)}
                                         name="message"
                                         type="text"
+                                        value={message}
                                         placeholder="Enter Message"
                                         className="w-96 h-40 resize-none flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
                                         required
