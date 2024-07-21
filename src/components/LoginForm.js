@@ -1,7 +1,20 @@
+import {useState} from 'react'
+
 export default function LoginForm() {
 
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault()
+
+        console.log(username, password)
+
+    }
+
     return (
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <div className="px-10 pb-10">
                 <label htmlFor="Username" className="block text-lg pb-1">
                     Username 
@@ -10,6 +23,8 @@ export default function LoginForm() {
                         <input 
                             id="Username"
                             type="text" 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             placeholder="Enter Username"
                             className="w-60 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6"
                             required /> 
@@ -21,6 +36,8 @@ export default function LoginForm() {
                     <input
                         id="Password"
                         type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter Password"
                         className="w-60 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6"
                         required />
