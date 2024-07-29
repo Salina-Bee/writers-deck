@@ -4,44 +4,55 @@ import { isEmail, isStrongPassword } from 'validator'
 
 export default function SignUpForm() {
 
+    // useStates
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
-    const {signup, error, isLoading} = useSignup()
     const [errorType, setErrorType] = useState("")
+
+    // useSignup
+    const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
 
         e.preventDefault()
 
-        // check if certain errors are still unresolved
-        if (errorType !== "") {
+        // check for certain errors
+        let errorInput = ""
 
-            let errorInput = "" 
-            switch (errorType) { // find the location of the unresolved error
-                case "Invalid Email":
-                    errorInput = document.getElementById("Email")
-                    return;
-                case "Weak Password":
-                    errorInput = document.getElementById("Password")
-                    return;
-                case "Passwords do not match":
-                    errorInput = document.getElementById("ConfirmPassword")
-                    return;
-                default:
-            }
-            
-            // put focus on unresolved error
-            if (errorInput !== "") {
-                errorInput.focus()
-                return;
-            }
+        // do the passwords match?
+        if (password !== passwordConfirm) {
+            errorInput = document.getElementById("ConfirmPassword")
         }
+
+        // is the password strong?
+        if (!isStrongPassword(password, {minLength: 8, minUppercase: 1, minLowercase: 1, minNumbers:1, minSymbols: 0})) {
+            errorInput = document.getElementById("Password")
+        }
+
+        // is the email valid?
+        if (!isEmail(email)) {
+            errorInput = document.getElementById("Email") 
+        }
+
+        // if any of the errors above were found, return
+        if (errorInput !== "") {
+            errorInput.focus()
+            return;
+        }
+
         
         await signup(username, email, password)
-    
 
+        // if username is already taken, show error message
+        if (error === "Username Taken") {
+            setErrorType("Username Taken")
+            errorInput = document.getElementById("Username")
+            errorInput.focus()
+            return;
+        }
+    
     }
 
     return (
@@ -55,13 +66,19 @@ export default function SignUpForm() {
                         <input 
                             id="Username"
                             type="text"
-                            onChange={(e) => {setUsername(e.target.value)}}
+                            onChange={(e) => {
+                                setUsername(e.target.value)
+                            
+                                if (errorType === "Username Taken") {
+                                    setErrorType("")
+                                }
+                            }}
                             value={username}
                             placeholder="Enter Username"
                             className="w-60 block flex-1 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6"
                             required /> 
                     </div>
-                    {error === "Username Taken" && <span className="text-red-500 text-sm">Username already in use</span>}
+                    {errorType === "Username Taken" && <span className="text-red-500 text-sm">Username already in use</span>}
                     <label htmlFor="Email" className="mt-8 block text-lg pb-1">
                         Email
                     </label>
@@ -69,7 +86,17 @@ export default function SignUpForm() {
                         <input 
                             id="Email"
                             type="email"
-                            onChange={(e) => setEmail(e.target.value)}              
+                            onChange={(e) => {
+                                
+                                    setEmail(e.target.value) 
+
+                                    if (!isEmail(email)) {
+                                        setErrorType("Invalid Email")
+                                    } else {
+                                        setErrorType("")
+                                    }
+                                }    
+                            }          
                             value={email}
                             placeholder="Enter Email"
                             className="w-60 block flex-1 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6 "
@@ -110,14 +137,15 @@ export default function SignUpForm() {
                             className="w-60 block flex-1 bg-transparent py-1.5 pl-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6"
                             required />
                     </div>
-                    <div className="max-w-60">{errorType==="Passwords do not match" && <span className="text-red-500 text-sm wrap">Passwords do not match</span>}</div>
+                    <div className="max-w-60">{password !== passwordConfirm && passwordConfirm !== "" && 
+                        <span className="text-red-500 text-sm wrap">Passwords do not match</span>}
+                    </div>
 
-                    <div className="flex justify-center mt-10">
+                    <div className="flex justify-center mt-10 pb-10">
                         <button className="inline-flex justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl disabled:bg-blue-400" type="submit" id="submitBtn" disabled={isLoading}>
                             <span className="px-8 py-2 text-slate-100 text-xl"> {!isLoading ? "Sign Up" : "Signing up..."}</span>
                         </button>
                     </div>
-                    <div className="max-w-60 py-5">{error && error !== "Username Taken" && <span className="text-red-500 text-md">Could not create account: {error}</span>}</div>
 
 
                 </div>
