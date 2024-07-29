@@ -1,5 +1,5 @@
 // --react-router-dom
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 // --i18n
 // import {useTranslation} from 'react-i18next';
 
@@ -13,8 +13,14 @@ import Contact from "./pages/Contact.js"
 import UserHome from "./pages/UserHome.js"
 import Login from "./pages/Login.js"
 
+// context 
+import { useAuthContext } from "./hooks/useAuthContext"
+
 
 function App() {
+
+  const { user } = useAuthContext()
+
   return (
     <div className="App">
       <Router>
@@ -24,9 +30,9 @@ function App() {
               <Route index element={<Home/>} />
               <Route path="about-us" element={<About/>}/>
               <Route path="contact" element={<Contact/>}/>
-              <Route path="userHome" element={<UserHome/>}/>
             </Route>
-            <Route path="/writers-deck/login" element={<Login/>}/>
+            <Route path="/writers-deck/login" element={!user ? <Login/> : <Navigate to="/writers-deck/my-projects"/>}/>
+            <Route path="/writers-deck/my-projects" element={user ? <UserHome/> : <Navigate to="/writers-deck/login"/>}/>
           </Routes>
       </div>
       </Router>

@@ -1,15 +1,20 @@
 import {useState} from 'react'
+import { useLogin } from '../hooks/useLogin'
 
 export default function LoginForm() {
 
+    // useStates
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
+    // useLogin
+    const { login, error, isLoading } = useLogin()
 
     const handleSubmit = async (e) => {
 
         e.preventDefault()
 
-        console.log(username, password)
+        await login(username, password)
 
     }
 
@@ -43,10 +48,14 @@ export default function LoginForm() {
                         required />
                 </div>
                 <div className="flex justify-center mt-10">
-                    <button className="inline-flex justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl" type="submit" id="submitBtn">
-                        <span className="px-8 py-2 text-slate-100 text-xl"> Login </span>
+                <button className="inline-flex justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl disabled:bg-blue-400" type="submit" id="submitBtn" disabled={isLoading}>
+                        <span className="px-8 py-2 text-slate-100 text-xl"> {!isLoading ? "Login" : "Logging in..."} </span>
                     </button>
                 </div>
+                <div className="max-w-60 py-5">
+                    {error && <span className="text-red-500 text-md">Incorrect username or password. Please try again. </span>}
+                </div>
+
             </div>                
         </form>
     )

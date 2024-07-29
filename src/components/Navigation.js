@@ -1,10 +1,20 @@
-// react-router-dom
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import {Button, Menu, MenuItem, MenuTrigger, Popover} from 'react-aria-components';
+
 //import {useTranslation} from 'react-i18next';
 
 export default function Navbar() {
 
+	const { logout } = useLogout()
+	const navigate = useNavigate()
+
+	// show sign in button iif user is signed in
+	const { user } = useAuthContext()
+
 	const dropdownClick = () => {
+		console.log( user )
 		const dropdownItem = document.getElementById("dropdown-item")
 		const dropdownActiveItem = document.getElementById("dropdown-active-item") // block 
 		if (dropdownItem.classList.contains("hidden")) {
@@ -24,6 +34,10 @@ export default function Navbar() {
 		navItems.classList.toggle("hidden")
 		burgerExit.classList.toggle("hidden")
 		burger.classList.toggle("hidden")
+	}
+
+	const logoutClick = () => {
+		logout()
 	}
 
 	return (
@@ -63,11 +77,29 @@ export default function Navbar() {
 							</div>
 						</div>
 					</li>
-					<li className="py-3 md:py-0">
+					{!user && <li className="py-3 md:py-0">
 						<button className="inline-flex relative justify-center gap-x-1.5 px-1 bg-secondary-100 rounded-xl py-2 mr-4 ml-3 md:ml-0">
 							<span className="whitespace-nowrap text-xl px-4 pt-1"><Link to="/writers-deck/login">Sign In </Link></span>
 						</button>
-					</li>
+					</li>}
+					{user && 
+					<li className="py-3 md:py-0 pr-5 cursor-pointer" onClick={logoutClick}>
+						<MenuTrigger>
+							<Button aria-label="My Account Menu" className="flex items-center">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-14">
+									<path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
+								</svg>
+								<span className="text-xl pl-1 pr-1">{user.username}</span></Button>
+							<Popover>
+								<Menu>
+								<MenuItem className="bg-white px-8 py-5 cursor-pointer border-b" onAction={() => navigate("/writers-deck/my-projects")}>My Projects</MenuItem>
+								<MenuItem className="bg-white px-8 py-5 cursor-pointer " onAction={() => logoutClick()}>Sign Out</MenuItem>
+								</Menu>
+							</Popover>
+						</MenuTrigger>
+						
+
+					</li>}
 				</ul>
 				</div>
 			</div>
