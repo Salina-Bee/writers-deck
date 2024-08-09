@@ -14,7 +14,7 @@ export const ProjectReducer = (state, action) => {
             }
         case 'CREATE_PROJECT': // return projects with new project (payload) added
             return {
-                projects: [action.payload , ...state.projects]
+                projects: [action.payload, ...state.projects]
             }
         case 'UPDATE_PROJECT': // return projects with given project modified
             return {
@@ -29,8 +29,10 @@ export const ProjectReducer = (state, action) => {
             }
         case 'DELETE_PROJECT': // return projects with given project removed
             return {
-                projects: state.projects.filter((project) => project._id !== action.payload)
+                projects: state.projects.filter((project) => project._id !== action.payload._id)
             }
+        default:
+            return state;
     }
 }
 

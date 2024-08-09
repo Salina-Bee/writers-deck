@@ -1,5 +1,5 @@
 import { useAuthContext } from './useAuthContext'
-import { useProjectContext } from './useProjectContext()'
+import { useProjectContext } from './useProjectContext'
 
 export const useLogout = () => {
 

@@ -92,7 +92,7 @@ export default function Navbar() {
 								<span className="text-xl pl-1 pr-1">{user.username}</span></Button>
 							<Popover>
 								<Menu>
-								<MenuItem className="bg-white px-8 py-5 cursor-pointer border-b" onAction={() => navigate("/writers-deck/my-projects")}>My Projects</MenuItem>
+								<MenuItem className="bg-white px-8 py-5 cursor-pointer border-b" onAction={() => navigate("/writers-deck/projects")}>My Projects</MenuItem>
 								<MenuItem className="bg-white px-8 py-5 cursor-pointer " onAction={() => logoutClick()}>Sign Out</MenuItem>
 								</Menu>
 							</Popover>

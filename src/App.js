@@ -1,10 +1,9 @@
-// --react-router-dom
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 // --i18n
 // import {useTranslation} from 'react-i18next';
 
 // components
-import Layout from "./components/Layout"
+import HomeLayout from "./components/HomeLayout.js"
 
 // pages
 import Home from "./pages/Home.js"
@@ -16,23 +15,25 @@ import Login from "./pages/Login.js"
 // context 
 import { useAuthContext } from "./hooks/useAuthContext"
 
-
 function App() {
 
   const { user } = useAuthContext()
+
+  // note: find a way to check if jwt has expired: then logout
 
   return (
     <div className="App">
       <Router>
       <div className="content font-body bg-slate-200">       
           <Routes>
-            <Route path='/writers-deck' element={<Layout/>}>
+            <Route path='/writers-deck' element={<HomeLayout/>}>
               <Route index element={<Home/>} />
               <Route path="about-us" element={<About/>}/>
               <Route path="contact" element={<Contact/>}/>
             </Route>
-            <Route path="/writers-deck/login" element={!user ? <Login/> : <Navigate to="/writers-deck/my-projects"/>}/>
-            <Route path="/writers-deck/my-projects" element={user ? <UserHome/> : <Navigate to="/writers-deck/login"/>}/>
+            <Route path="/writers-deck/login" element={!user ? <Login/> : <Navigate to="/writers-deck/projects"/>}/>
+            <Route path="/writers-deck/projects" element={user ? <UserHome/> : <Navigate to="/writers-deck/login"/>}/>
+            <Route path="/writers-deck/projects/:id" />
           </Routes>
       </div>
       </Router>
