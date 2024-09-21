@@ -1,0 +1,6 @@
+This log has been created to keep track of current tasks, issues, and overall progress.
+
+To-do: (last updated: 09/21/2024)
+-implement page for project overview; don't use the sidebar like originally planned, instead include all project information on the main page, and allow users to browse through cards via pagination + gallery/slideshow design
+-for each field in the project details, give user the option to edit and update the information; remember to add error handling too
+-if user is not authorized to view project details, show some error message that allows them to return to their own project page.
