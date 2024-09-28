@@ -27,7 +27,6 @@ export default function MyProjectsItem({ project }) {
 
         if (response.ok) {
             dispatch({type: 'UPDATE_PROJECT', payload: newProject})
-            console.log(project)
         } 
     }
 
@@ -77,7 +76,7 @@ export default function MyProjectsItem({ project }) {
                 <span className="text-gray-400 text-md italic"><strong>Last updated:</strong> {formatDistanceToNow(new Date(project.updatedAt), {addSuffix: true})}</span>
             </div>
             <div className="mt-3 max-w-8/10">
-                {project.summary === "" && <span className="italic text-md text-gray-400">&#40;No description available.&#41;</span>}
+                {project.summary === "" && <span className="italic text-md text-gray-400">&#40;No description.&#41;</span>}
                 {project.summary !== "" && <span className="text-md break-words">{project.summary} </span>}
             </div>
 

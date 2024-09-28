@@ -80,7 +80,7 @@ export default function CreateProjectModal(props) {
                                             }
                                         }}
                                         className="w-full bg-transparent py-1 px-1 text-primary placeholder:text-gray-400 ring-slate-300 focus:ring-0 sm:leading-6"
-                                        maxLength="24"
+                                        maxLength={24}
                                         required /> 
                                 </div>
                                 <div>

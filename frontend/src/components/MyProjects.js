@@ -10,27 +10,30 @@ export default function MyProjects(props) {
     const { projects, dispatch } = useProjectContext()
     const { user } = useAuthContext()
     const navigate = useNavigate();
-    const {logout} = useLogout();
+    const { logout } = useLogout();
 
-    
 
     useEffect(() => {
 
         // get all projects owned by user
         const fetchMyProjects = async () => {
-            const response = await fetch('http://localhost:4000/api/projects', {
-                headers: {'Authorization': `Bearer ${user.token}`}
-            })
-            const json = await response.json()
 
-            if (response.ok) {
-                dispatch({type: 'SET_PROJECTS', payload: json})
-            } else {
-                if (response.status === 401) {
-                    logout()
-                    navigate("/writers-deck/login")
+                const response = await fetch('http://localhost:4000/api/projects', {
+                    headers: {'Authorization': `Bearer ${user.token}`}
+                })
+                const json = await response.json()
+
+                if (response.ok) {
+                    dispatch({type: 'SET_PROJECTS', payload: json})
+                } else {
+                    if (response.status === 401) { // jsonwebtoken expired
+                        logout()
+                        navigate("/writers-deck/login")
+                    }
                 }
-            }
+
+
+            
         }
 
         if (user) {

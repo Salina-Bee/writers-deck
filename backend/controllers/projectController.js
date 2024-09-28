@@ -162,8 +162,8 @@ const updateProject = async (req, res) => {
     if (name) {
         const projectCheck = await Project.findOne({user_id: project.user_id, name})
 
-        if (projectCheck._id !== id) {
-            return res.status(400).json({error: "This name is already being used by a different project."})
+        if (projectCheck && projectCheck._id !== id) {
+            return res.status(400).json({error: "Project name already used"})
         }
     }
 
@@ -173,7 +173,6 @@ const updateProject = async (req, res) => {
     return res.status(200).json(projectUpdated)
 
 
-    
 }
 
 module.exports = {
