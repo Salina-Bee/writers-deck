@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useProjectContext } from '../hooks/useProjectContext';
 
 // components
-// import CardEditor from "../components/CardEditor";
+
 
 export default function ProjectDetails() {
 
@@ -83,6 +83,10 @@ export default function ProjectDetails() {
 
     return (
         <div className="flex min-h-screen">
+            <div>
+                {editField}
+                <Link to="/writers-deck/card">Card Editor</Link>
+            </div>
             {/* Loading page*/}
             {!project && 
             <div className="h-screen w-screen bg-slate-200 flex justify-center">
@@ -224,8 +228,8 @@ export default function ProjectDetails() {
                         {project.collaborators && project.collaborators.length === 0 && 
                         <div className="mt-3"> 
                             <span className="px-1 text-gray-400">There are no collaborators for this project.</span>
-                            <div className="mt-5">
-                                <button className="inline-flex justify-center items-center px-1 bg-secondary-100 rounded-xl ">
+                            {editField !== "Collaborators" && <div className="mt-5">
+                                <button className="inline-flex justify-center items-center px-1 bg-secondary-100 rounded-xl" onClick={() => {setEditField("Collaborators")}}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#f1f4f9" className="size-6 ml-2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                                     </svg>
@@ -234,7 +238,19 @@ export default function ProjectDetails() {
                                     </span>
                                     
                                 </button>
-                            </div>
+                            </div>}
+                            
+                            {editField === "Collaborators" && <div className="mt-5 flex">
+                                <div>
+                                    <label htmlFor="collabUser">Username</label>
+                                    <input type="text" id="collabUser" placeholder="Enter username" className="w-full overflow-auto bg-slate-200 focus:bg-slate-100 py-1.5 px-1 text-primary" />
+                                
+                                </div>    
+                                
+                            
+                            
+                            
+                            </div>}
                                
                         </div>}
                     </div>

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useProjectContext } from '../hooks/useProjectContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
@@ -9,10 +8,10 @@ export default function MyProjects(props) {
 
     const { projects, dispatch } = useProjectContext()
     const { user } = useAuthContext()
-    const navigate = useNavigate();
+
     const { logout } = useLogout();
 
-
+    
     useEffect(() => {
 
         // get all projects owned by user
@@ -28,18 +27,15 @@ export default function MyProjects(props) {
                 } else {
                     if (response.status === 401) { // jsonwebtoken expired
                         logout()
-                        navigate("/writers-deck/login")
                     }
                 }
 
-
-            
         }
 
         if (user) {
             fetchMyProjects()
         }
-    }, [dispatch, user, logout, navigate])
+    }, [dispatch, user])
 
     return (
         <div className="text-primary bg-slate-200">
