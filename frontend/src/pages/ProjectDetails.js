@@ -114,7 +114,7 @@ export default function ProjectDetails() {
                     <div className="mx-10 mt-10">
                         <textarea
                             id="Name"
-                            className="mt-3 w-full overflow-auto text-2xl font-semibold whitespace-nowrap bg-slate-200 focus:bg-slate-100 p-1 text-primary placeholder:text-gray-400 ring-slate-300"
+                            className="mt-3 w-full overflow-auto text-2xl font-semibold whitespace-nowrap bg-bgLight-400 focus:bg-sky-100 px-1 py-3 text-primary placeholder:text-gray-400 ring-slate-300"
                             defaultValue={project.name}
                             onFocus={() => setEditField("Name")}
                             rows={1}
@@ -181,7 +181,7 @@ export default function ProjectDetails() {
                         <div className="mt-2">
                             <textarea 
                                 id="Summary"
-                                className="w-full overflow-auto  bg-slate-200 focus:bg-slate-100 py-1.5 px-1 text-primary placeholder:text-gray-400 ring-slate-300"
+                                className="w-full overflow-auto  bg-bgLight-400 focus:bg-sky-100 py-1.5 px-1 text-primary placeholder:text-gray-400 ring-slate-300"
                                 defaultValue={project.summary}
                                 placeholder={project.summary !== ""? "" : "(No description available.)"}
                                 onFocus={() => setEditField("Summary")}

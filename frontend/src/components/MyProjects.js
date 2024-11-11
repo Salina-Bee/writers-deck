@@ -38,7 +38,7 @@ export default function MyProjects(props) {
     }, [dispatch, user])
 
     return (
-        <div className="text-primary bg-slate-200">
+        <div className="text-primary ">
             
             <div className="ml-10 mt-5 md:static ">
                 <span className="text-3xl whitespace-nowrap"><strong>My Projects</strong></span>

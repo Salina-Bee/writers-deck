@@ -74,7 +74,7 @@ export default function UserHome() {
     })
 
     return (
-        <div className="flex bg-slate-200 max-h-screen max-w-screen">
+        <div className="flex max-h-screen max-w-screen">
 
             {/* modal + create project form*/} 
             {showModal && <CreateProjectModal toggle={toggleModal}/>}

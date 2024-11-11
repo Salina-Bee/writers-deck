@@ -3,11 +3,17 @@ import Underline from '@tiptap/extension-underline'
 import BulletList from '@tiptap/extension-bullet-list'
 import ListItem from '@tiptap/extension-list-item'
 import StarterKit from '@tiptap/starter-kit'
+import TextStyle from '@tiptap/extension-text-style'
+import FontFamily from '@tiptap/extension-font-family'
 import MenuBar from './MenuBar'
 
 const extensions = [
     StarterKit, 
     Underline,
+    TextStyle,
+    FontFamily.configure({
+        types: ['textStyle'],
+      }),
     BulletList.configure({
         HTMLAttributes: {
             class: "list-disc"

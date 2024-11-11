@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <div className="content font-body bg-slate-200">       
+      <div className="content font-body bg-bgLight-400">       
           <Routes>
           
             <Route path='/writers-deck' element={<HomeLayout/>}>

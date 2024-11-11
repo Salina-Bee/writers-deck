@@ -1,15 +1,26 @@
 This log has been created to keep track of current tasks, issues, and overall progress.
 
-(Last updated: 09/28/2024)
+(Last updated: 11/11/2024)
 
 Changes made:
--Project Overview page layout has been updated, removing the sidebar and making the overall design much simpler and more responsive.
--Users can now update project name and summary in the Project Overview page. This includes error handling for the project name.
+-Adjusted the My Projects page to have focusable buttons.
+-Changed the light gray background to a very light blue, and made each Project item a darker gray.
+-Began working on creating the toolbar/menubar for card editor. Current functionalities include: bold, italic, underline, undo/redo, bulleted list, and font family. 
+
+The plan is to have 2-3 tabs for editing a card: one for the card's design, one for the card's metadata, and one for the card's content.
 
 To-do: 
--Allow users to add collaborators for their project. Display all collaborators via table, where the first column is their username, and the second column is their permissions (read-only, or read-write). Include error handling. 
--Display project cards, including their name and design.
+
+(Menubar.js)
+-Allow users to adjust font colour.
+-Allow users to adjust alignment: left align, center, justified
+-Allow users to adjust font size/create headings.
+
+(MyProjectDetails.js)
+-Allow users to add collaborators for their project. Display all collaborators via table, where the first column is their username, and the second column is their permissions (read-only, or read-write). Include error handling.
+**Consider the possibility of implementing permissions on card level (as opposed to just project level)? 
+-Display project cards, including their name and design. Likely using a slideshow-like implementation, organizing cards by type (Character, Setting, etc.)
 -If the user is not authorized to view project details, show some error message that allows them to return to their own project page.
 
 Known errors/issues:
--for My Projects, need to rewrite the useEffect hook so that logout and navigate don't cause the function to run more often than necessary; alternatively, check for token expiry sooner rather than later
+-For My Projects, need to rewrite the useEffect hook so that logout and navigate don't cause the function to run more often than necessary; alternatively, check for token expiry sooner rather than later
