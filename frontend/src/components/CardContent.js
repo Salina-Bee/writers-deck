@@ -1,29 +1,58 @@
 import { useEditor, EditorContent} from '@tiptap/react'
+import Color from '@tiptap/extension-color'
 import Underline from '@tiptap/extension-underline'
-import BulletList from '@tiptap/extension-bullet-list'
-import ListItem from '@tiptap/extension-list-item'
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
 import StarterKit from '@tiptap/starter-kit'
 import TextStyle from '@tiptap/extension-text-style'
+import TextAlign from '@tiptap/extension-text-align'
 import FontFamily from '@tiptap/extension-font-family'
 import MenuBar from './MenuBar'
 
 const extensions = [
-    StarterKit, 
+    StarterKit.configure({
+        bulletList: {
+            HTMLAttributes: {
+                class: "list-disc"
+            },
+        },
+        orderedList: {
+            HTMLAttributes: {
+                class: "list-decimal"
+            },
+        },
+        listItem: {
+            HTMLAttributes: {
+                class: "ml-10"
+            }
+        },
+        heading: {
+            HTMLAttributes: {
+                class: "text-xl"
+            }
+        }
+    }), 
+    Color,
     Underline,
     TextStyle,
+    TextAlign.configure({
+        types: ['heading', 'paragraph']
+      }),
     FontFamily.configure({
         types: ['textStyle'],
       }),
-    BulletList.configure({
+    TaskList.configure({
         HTMLAttributes: {
-            class: "list-disc"
-        },
+            class: "ml-10 lg:max-w-[700px]"
+        }
     }),
-    ListItem.configure({
+    TaskItem.configure({
         HTMLAttributes: {
-            class: "ml-10"
-        },
-    })]
+            class: "flex break-all text-wrap",
+            nested: true,
+        }
+    }),
+    ]
     
 const content = '<p>Hello World! Here is a list of what I want to do: <ul><li>Cry</li><li>Sleep</li> </ul></p>' // likely, get card content and set to this variable
 
@@ -42,7 +71,7 @@ export default function CardContent() {
             
             <div className="flex p-10">
             
-                <EditorContent className="lg:w-[800px]" editor={editor} />
+                <EditorContent className="md:w-[600px] lg:w-[800px]" editor={editor} />
             
             </div>
         </div>

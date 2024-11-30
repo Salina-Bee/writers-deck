@@ -1,20 +1,21 @@
 This log has been created to keep track of current tasks, issues, and overall progress.
 
-(Last updated: 11/11/2024)
+(Last updated: 11/13/2024)
 
 Changes made:
--Adjusted the My Projects page to have focusable buttons.
--Changed the light gray background to a very light blue, and made each Project item a darker gray.
--Began working on creating the toolbar/menubar for card editor. Current functionalities include: bold, italic, underline, undo/redo, bulleted list, and font family. 
-
+-Added the ability to change text alignment and use multiple list types. 
+-Added the ability to change font colour.
+Current functionalities include: bold, italic, underline, undo/redo, list, font family, font colour, text alignment. 
+-Adjusted Tailwind CSS classes on TaskList items to prevent them from overflowing.
 The plan is to have 2-3 tabs for editing a card: one for the card's design, one for the card's metadata, and one for the card's content.
 
 To-do: 
 
 (Menubar.js)
--Allow users to adjust font colour.
--Allow users to adjust alignment: left align, center, justified
+-For font colour optimization: consider saving the last 5-10 selected colours to allow users to choose from them. Consider also implementing an input field for hex codes as an alternative.
 -Allow users to adjust font size/create headings.
+-Allow users to add links and create tables.
+
 
 (MyProjectDetails.js)
 -Allow users to add collaborators for their project. Display all collaborators via table, where the first column is their username, and the second column is their permissions (read-only, or read-write). Include error handling.
