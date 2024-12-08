@@ -27,9 +27,7 @@ const extensions = [
             }
         },
         heading: {
-            HTMLAttributes: {
-                class: "text-xl"
-            }
+            levels: [1,2,3]
         }
     }), 
     Color,

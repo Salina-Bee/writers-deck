@@ -84,7 +84,7 @@ export default function UserHome() {
                 {/* sidebar */}
                 {showSidebar && <div className="min-h-screen bg-gradient-to-b from-primary to-blue-950 text-slate-100 px-10 pt-5 flex-col z-10 fixed md:static shrink-0">
                         <div className="flex justify-center">
-                            <span className="text-2xl font-semibold whitespace-nowrap px-10"><h1>Writer's Deck</h1></span>
+                            <span className="font-semibold whitespace-nowrap px-10"><h3>Writer's Deck</h3></span>
                         </div>
                         <div className="text-xl mt-10">
                             <ul>

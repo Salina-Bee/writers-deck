@@ -80,37 +80,7 @@ export default function MenuBar({editor}) {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.995 3.744v7.5a6 6 0 1 1-12 0v-7.5m-2.25 16.502h16.5" />
                     </svg>
                 </button>
-            
-            {/*Font Family*/}
-                <ComboBox aria-label="Font Family"> 
-                    <div className="flex ml-2 border-2 rounded-md border-cyan-800 px-2 py-1 text-primary bg-blue-200">
-                        
-                        <Input id="font-family-input" className="mr-2 p-1 bg-blue-200" value={currentFont} onChange={(e) => setCurrentFont(e.target.value)}/>
-                        <Button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
-                                <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
-                            </svg>
-                        </Button>
-                    </div> 
-                    <Popover>
-                        <ListBox className="max-h-28 overflow-y-auto">
-                            {commonFonts.map((font) => 
-                                <ListBoxItem className="bg-blue-200 px-1 py-1 hover:bg-blue-400" onAction={() => {
 
-                                    // set font to the one selected
-                                    editor.chain().focus().setFontFamily(font).run()
-                                    setCurrentFont(font)
-                                    
-                                    }}>
-                                    
-                                    {font}
-                                </ListBoxItem>
-                            )}
-                        </ListBox>
-                    </Popover>
-                </ComboBox>
-
-                
             {/*Font Color */}
             <ColorPicker defaultValue="#3B3B58">
                 <DialogTrigger>
@@ -153,6 +123,80 @@ export default function MenuBar({editor}) {
                     </Popover>
                 </DialogTrigger>
             </ColorPicker>
+
+            {/*Font Family*/}
+                <ComboBox aria-label="Font Family"> 
+                    <div className="flex ml-2 border-2 rounded-md border-cyan-800 px-2 py-1 text-primary bg-blue-200">
+                        
+                        <Input id="font-family-input" className="mr-2 p-1 w-28 bg-blue-200" value={currentFont} onChange={(e) => setCurrentFont(e.target.value)}/>
+                        <Button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                                <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                            </svg>
+                        </Button>
+                    </div> 
+                    <Popover>
+                        <ListBox className="max-h-28 overflow-y-auto">
+                            {commonFonts.map((font) => 
+                                <ListBoxItem className=" bg-blue-200 px-1 py-1 hover:bg-blue-400" onAction={() => {
+
+                                    // set font to the one selected
+                                    editor.chain().focus().setFontFamily(font).run()
+                                    setCurrentFont(font)
+                                    
+                                    }}>
+                                    
+                                    {font}
+                                </ListBoxItem>
+                            )}
+                        </ListBox>
+                    </Popover>
+                </ComboBox>
+
+            {/* Heading */}
+            <Select aria-label="Heading" className="border-2 rounded-md border-cyan-800 px-2 py-2 text-primary bg-blue-200">
+                <Button className="flex">
+                    <SelectValue>
+                        {({defaultChildren, isPlaceholder}) => {
+                            return isPlaceholder? <><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                            <path d="M17 11V4H19V21H17V13H7V21H5V4H7V11H17Z"></path>
+                        </svg></> : defaultChildren;
+                        }}
+                    </SelectValue>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="ml-1 size-5" aria-hidden="true">
+                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                    </svg>
+                </Button>
+
+                <Popover>
+                    <ListBox className="flex mt-1">
+                        <ListBoxItem textValue="heading-1" className={"border-2 rounded-l-md border-cyan-800 px-2 py-2 " + (editor.isActive('heading', { level: 1 }) ? 'bg-blue-400' : 'bg-blue-200')} onAction={() => {
+                            editor.chain().focus().toggleHeading({ level: 1 }).run()
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.243 4.493v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501m4.501-8.627 2.25-1.5v10.126m0 0h-2.25m2.25 0h2.25" />
+                            </svg>
+
+                        </ListBoxItem>
+                        <ListBoxItem textValue="heading-2" className={"border-2 border-cyan-800 px-2 py-2 " + (editor.isActive('heading', { level: 2 }) ? 'bg-blue-400' : 'bg-blue-200')} onAction={() => {
+                            editor.chain().focus().toggleHeading({ level: 2 }).run()
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 19.5H16.5v-1.609a2.25 2.25 0 0 1 1.244-2.012l2.89-1.445c.651-.326 1.116-.955 1.116-1.683 0-.498-.04-.987-.118-1.463-.135-.825-.835-1.422-1.668-1.489a15.202 15.202 0 0 0-3.464.12M2.243 4.492v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501" />
+                            </svg>
+                        </ListBoxItem>
+                        <ListBoxItem textValue="heading-3" className={"border-2 rounded-r-md border-cyan-800 px-2 py-2 " + (editor.isActive('heading', { level: 3 }) ? 'bg-blue-400' : 'bg-blue-200')} onAction={() => {
+                            editor.chain().focus().toggleHeading({ level: 3 }).run()
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M20.905 14.626a4.52 4.52 0 0 1 .738 3.603c-.154.695-.794 1.143-1.504 1.208a15.194 15.194 0 0 1-3.639-.104m4.405-4.707a4.52 4.52 0 0 0 .738-3.603c-.154-.696-.794-1.144-1.504-1.209a15.19 15.19 0 0 0-3.639.104m4.405 4.708H18M2.243 4.493v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501" />
+                            </svg>
+                        </ListBoxItem>
+                    </ListBox>
+                    
+                </Popover>
+            </Select>
+            
                 
             
             {/*List*/}
@@ -171,7 +215,7 @@ export default function MenuBar({editor}) {
                 </Button>
 
                 <Popover>
-                    <ListBox className="flex">
+                    <ListBox className="flex mt-1">
                         <ListBoxItem textValue="bullet-list" className={"border-2 rounded-l-md border-cyan-800 px-2 py-2 " + (editor.isActive("bulletList") ? 'bg-blue-400' : 'bg-blue-200')} onAction={() => {
                             editor.chain().focus().toggleBulletList().run()
                         }}>
@@ -216,7 +260,7 @@ export default function MenuBar({editor}) {
                     </svg>
                 </Button>
                 <Popover>
-                    <ListBox className="flex">
+                    <ListBox className="flex mt-1">
 
                         <ListBoxItem textValue="align-left" className={"border-2 rounded-l-md border-cyan-800 px-2 py-2 " + (editor.isActive({ textAlign: 'left' }) ? 'bg-blue-400' : 'bg-blue-200')} onAction={() => {
                             editor.commands.setTextAlign('left')

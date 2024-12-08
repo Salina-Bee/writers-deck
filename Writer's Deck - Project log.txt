@@ -1,20 +1,19 @@
 This log has been created to keep track of current tasks, issues, and overall progress.
 
-(Last updated: 11/13/2024)
+(Last updated: 12/07/2024)
 
 Changes made:
--Added the ability to change text alignment and use multiple list types. 
--Added the ability to change font colour.
-Current functionalities include: bold, italic, underline, undo/redo, list, font family, font colour, text alignment. 
--Adjusted Tailwind CSS classes on TaskList items to prevent them from overflowing.
+-Added the ability to create headings.
 The plan is to have 2-3 tabs for editing a card: one for the card's design, one for the card's metadata, and one for the card's content.
 
 To-do: 
 
 (Menubar.js)
--For font colour optimization: consider saving the last 5-10 selected colours to allow users to choose from them. Consider also implementing an input field for hex codes as an alternative.
--Allow users to adjust font size/create headings.
--Allow users to add links and create tables.
+-[Optimization] Consider saving the last 5-10 selected colours to allow users to choose from them. Consider also implementing an input field for hex codes as an alternative.
+-[Optimization] On dropdowns, change the down arrow to up arrow when the popover is visible, and then back to down arrow when it isn't
+-Allow users to add links and insert images.
+-Allow different users to collaborate on the same document. Ensure that content is retained even after closing.
+-Adjust Menubar styling for different screen sizes.
 
 
 (MyProjectDetails.js)
